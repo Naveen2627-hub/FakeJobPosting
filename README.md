@@ -1,4 +1,4 @@
-#**Fake Job Posting Prediction**
+**#Fake Job Posting Prediction**
 
 **Problem Definition**
 "Fake Job Posting Prediction" is a data mining project that aims to uncover and flag fake job listings on 
