@@ -15,14 +15,16 @@ dataset of job postings. We found a dataset in Kaggle in the link below.
 https://www.kaggle.com/datasets/shivamb/real-or-fake-fake-jobposting-prediction?select=fake_job_postings.csv
 
 **Implementation Steps:**
-In this project, our scope was limited to use only data mining models or not to use NLP models hence we have decided to implement below process:
-1. Performed data cleaning by handling data imbalance, outliers, converting categorical variables into binary features using one hot ecoder technique.
-2. Identified the 10 most commonly used fradulent words using word frequency technique and converted them into binary features.
-3. Implemented feature selection technique, to select most important features using chi square test.
-4. Implemented Machine learning models such as Logistic Regression, Decision Trees, Random Forest, Naive Bayes, KNN, XGBoost.
-5. Compared the evaluation techniques of all the above models and picked the best performing model which is Random Forest with an
-accuracy of 0.8454 and a precision of 0.21.
-6. Performed Hyperparameter tuning for Random Forest.
+This project focuses on the implementation of data mining techniques to address fraudulent activity detection. The following steps were undertaken:
+
+1. Data Cleaning: The dataset underwent preprocessing to address data imbalances, outliers, and categorical variables were converted into binary features using the one-hot encoding technique.
+2. Fraudulent Word Identification: Through word frequency analysis, the top 10 most commonly occurring fraudulent words were identified and converted into binary features.
+3. Feature Selection: Employed the chi-square test to select the most significant features for model training.
+4. Machine Learning Models: Implemented various machine learning algorithms including Logistic Regression, Decision Trees, Random Forest, Naive Bayes, KNN, and XGBoost.
+5. Model Evaluation: The performance of each model was evaluated using standard evaluation metrics. The Random Forest model emerged as the top performer with an accuracy of 0.8454 and a precision of 0.21.
+6. Hyperparameter Tuning: Fine-tuned the parameters of the Random Forest model to optimize its performance further.
+
+By adhering to these steps, the project aims to provide an effective solution for fraudulent activity detection while limiting the use of NLP models as per project scope. For detailed implementation and results, refer to the respective sections and documentation within the project repository
 
 
 
