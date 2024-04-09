@@ -25,7 +25,7 @@ jobs:
 
     - name: Deploy to GCE
       run: |
-        # Example: Copy files to the instance. Adjust the scp/ssh commands according to your needs.
+        # Example1: Copy files to the instance. Adjust the scp/ssh commands according to your needs.
         gcloud compute scp ./ ${{ secrets.GCE_INSTANCE }}:~/app --zone ${{ secrets.GCE_ZONE }} --recurse
         # SSH command to restart your application or run deployment scripts on your instance
         gcloud compute ssh ${{ secrets.GCE_INSTANCE }} --zone ${{ secrets.GCE_ZONE }} --command "cd ~/app && ./deploy_script.sh"
