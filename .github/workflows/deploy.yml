@@ -1,4 +1,4 @@
-name: Deploy to Google Compute Engine
+name: Deploy to Google Cloud VM
 
 on:
   push:
@@ -8,24 +8,33 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up Google Cloud
-      uses: google-github-actions/setup-gcloud@v0
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.3
       with:
-        project_id: ${{ secrets.GCE_PROJECT }}
-        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS_JSON }}
-        export_default_credentials: true
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: whoami
 
-    - name: Install Dependencies
-      run: | # Add commands to install dependencies, if needed
-        echo "Optionally, install any dependencies here."
-
-    - name: Deploy to GCE
+    - name: Debugging
       run: |
-        # Example1: Copy files to the instance. Adjust the scp/ssh commands according to your needs.
-        gcloud compute scp ./ ${{ secrets.GCE_INSTANCE }}:~/app --zone ${{ secrets.GCE_ZONE }} --recurse
-        # SSH command to restart your application or run deployment scripts on your instance
-        gcloud compute ssh ${{ secrets.GCE_INSTANCE }} --zone ${{ secrets.GCE_ZONE }} --command "cd ~/app && ./deploy_script.sh"
+        echo "GITHUB_WORKSPACE: $GITHUB_WORKSPACE"
+        echo "GCP_VM_USERNAME: ${{ secrets.GCP_VM_USERNAME }}"
+        echo "GCP_VM_HOST: ${{ secrets.GCP_VM_HOST }}"
+
+    - name: Deploy to Google Cloud VM
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.GCP_VM_HOST }}
+        username: ${{ secrets.GCP_VM_USERNAME }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        script: |
+          cd aml-project/anti_money_laundering_project
+          git pull origin main
