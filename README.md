@@ -1,5 +1,5 @@
 **Fake Job Posting Prediction**
-
+**Created**
 **Problem Definition**
 "Fake Job Posting Prediction" is a data mining project that aims to uncover and flag fake job listings on 
 online job boards and recruitment websites. This project will employ a blend of machine learning and web scraping methods to gather and examine data from job postings. 
