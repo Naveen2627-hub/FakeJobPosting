@@ -14,7 +14,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v1.0.3
+      uses: naveensvs_us/ssh-action@v1.0.3
       with:
         host: ${{ secrets.GCP_VM_HOST }}
         username: ${{ secrets.GCP_VM_USERNAME }}
@@ -29,7 +29,7 @@ jobs:
         echo "GCP_VM_HOST: ${{ secrets.GCP_VM_HOST }}"
 
     - name: Deploy to Google Cloud VM
-      uses: appleboy/ssh-action@v1.0.3
+      uses: naveensvs_us/ssh-action@v1.0.3
       with:
         host: ${{ secrets.GCP_VM_HOST }}
         username: ${{ secrets.GCP_VM_USERNAME }}
